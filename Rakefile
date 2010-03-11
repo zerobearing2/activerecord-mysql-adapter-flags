@@ -5,12 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "activerecord-mysql-adapter-flags"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Add mysql driver flags to MysqlAdpater.}
+    gem.description = %Q{Allow setting mysql driver flags in database.yml for Rails apps.}
     gem.email = "david@zerobearing.com"
     gem.homepage = "http://github.com/zerobearing2/activerecord-mysql-adapter-flags"
-    gem.authors = ["zerobearing2"]
+    gem.authors = ["David Bradford"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_dependency "activerecord", ">= 2.3.2"
+    gem.add_dependency "mysql", ">= 2.8.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
