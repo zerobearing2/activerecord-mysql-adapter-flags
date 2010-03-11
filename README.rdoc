@@ -1,6 +1,32 @@
 = activerecord-mysql-adapter-flags
 
-Description goes here.
+MysqlAdapter patch to allow passing driver flags from config/database.yml.
+
+== Why
+
+Needed to enable mysql driver compression for a few projects. The default MysqlAdapter shipped with Rails doesn't allow for
+flags. Therefore, this is a simple patch to allow Mysql::CONST's to be defined in the database.yml file.
+
+== Example
+
+config/database.yml
+
+  development:
+    adapter: mysql
+    username: dbuser
+    password: "secert"
+    host: localhost
+    database: test
+    flags: "CLIENT_MULTI_RESULTS, CLIENT_COMPRESS"
+    
+Note: the flags get OR'd together before passing onto the connect method. If the flag const doesn't exist in the Mysql class,
+it will be ignored.
+
+== TODO's
+
+* write some specs
+* test against more versions of ActiveRecord
+* find cleaner way to implement other than opening the class and overriding custom initializer.
 
 == Note on Patches/Pull Requests
  

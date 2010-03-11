@@ -23,7 +23,7 @@ module ActiveRecord
           while(@connection_options.length<7) do; @connection_options << nil; end
 
           previous_flags = @connection_options[-1].to_i
-          flag_strings = config[:flags].split(",").map{|f| f.to_s.strip}
+          flag_strings = config[:flags].split(",").map{|f| f.to_s.strip.upcase}
           flag_vals = flag_strings.collect{|f| Mysql.const_defined?(f) ? Mysql.const_get(f) : nil}.compact
           flags = flag_vals.inject(previous_flags){|val,i| val|i}
           
